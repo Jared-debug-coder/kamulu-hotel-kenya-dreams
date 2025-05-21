@@ -77,7 +77,7 @@ const AmenitiesPage = () => {
       <div className="relative h-80 md:h-96">
         <div className="absolute inset-0">
           <img
-            src="/amenities-hero.jpg"
+            src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=1470&auto=format&fit=crop"
             alt="Amenities"
             className="w-full h-full object-cover"
           />

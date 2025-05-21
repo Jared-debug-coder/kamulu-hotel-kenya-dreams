@@ -14,23 +14,23 @@ const Hero = () => {
   
   const heroImages = [
     {
-      src: "/hero-image.jpg",
+      src: "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1470&auto=format&fit=crop",
       alt: "Kamulu Waters Hotel Front View"
     },
     {
-      src: "/deluxe-room.jpg",
+      src: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?q=80&w=1374&auto=format&fit=crop",
       alt: "Luxury Accommodation"
     },
     {
-      src: "/family-room.jpg",
+      src: "https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=1374&auto=format&fit=crop",
       alt: "Family Friendly Rooms"
     },
     {
-      src: "/restaurant.jpg",
+      src: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1470&auto=format&fit=crop",
       alt: "Hotel Restaurant"
     },
     {
-      src: "/event-space.jpg",
+      src: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=1498&auto=format&fit=crop",
       alt: "Event Space"
     }
   ];
