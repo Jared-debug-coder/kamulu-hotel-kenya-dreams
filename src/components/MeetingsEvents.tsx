@@ -1,6 +1,6 @@
 
 import { Link } from 'react-router-dom';
-import { Meeting, Calendar } from 'lucide-react';
+import { Calendar, CalendarClock } from 'lucide-react';
 
 const MeetingsEvents = () => {
   return (
@@ -22,7 +22,7 @@ const MeetingsEvents = () => {
             
             <div className="space-y-4 mb-6">
               <div className="flex items-start">
-                <Meeting className="h-5 w-5 text-hotel-gold mr-3 mt-1 flex-shrink-0" />
+                <CalendarClock className="h-5 w-5 text-hotel-gold mr-3 mt-1 flex-shrink-0" />
                 <div>
                   <h4 className="font-semibold">Conference Room</h4>
                   <p className="text-gray-600">Ideal for business meetings, seminars, and corporate events. Capacity up to 100 people.</p>

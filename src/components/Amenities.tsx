@@ -1,6 +1,6 @@
 
-import { Utensils, Coffee, Wifi, Car, WashingMachine, Users, Calendar, Meeting } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Utensils, Coffee, Wifi, Car, WashingMachine, Users, Calendar, CalendarClock } from 'lucide-react';
 
 const amenitiesData = [
   {
@@ -24,7 +24,7 @@ const amenitiesData = [
     description: "Secure on-site parking available for all our guests."
   },
   {
-    icon: <Meeting className="h-10 w-10 text-hotel-gold" />,
+    icon: <CalendarClock className="h-10 w-10 text-hotel-gold" />,
     title: "Event Space",
     description: "Perfect venues for weddings, celebrations and special occasions."
   },

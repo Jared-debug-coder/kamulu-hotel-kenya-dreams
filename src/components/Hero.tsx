@@ -50,8 +50,6 @@ const Hero = () => {
         <Carousel 
           className="w-full h-full" 
           opts={{ loop: true, duration: 50 }}
-          value={activeIndex}
-          onValueChange={setActiveIndex}
         >
           <CarouselContent className="h-full">
             {heroImages.map((image, index) => (
