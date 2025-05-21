@@ -7,8 +7,11 @@ import {
   CarouselNext, 
   CarouselPrevious 
 } from "@/components/ui/carousel";
+import { useEffect, useState } from 'react';
 
 const Hero = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  
   const heroImages = [
     {
       src: "/hero-image.jpg",
@@ -21,14 +24,35 @@ const Hero = () => {
     {
       src: "/family-room.jpg",
       alt: "Family Friendly Rooms"
+    },
+    {
+      src: "/restaurant.jpg",
+      alt: "Hotel Restaurant"
+    },
+    {
+      src: "/event-space.jpg",
+      alt: "Event Space"
     }
   ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [heroImages.length]);
 
   return (
     <div className="relative h-screen">
       {/* Hero Image Carousel */}
       <div className="absolute inset-0 z-0">
-        <Carousel className="w-full h-full" opts={{ loop: true, duration: 50 }}>
+        <Carousel 
+          className="w-full h-full" 
+          opts={{ loop: true, duration: 50 }}
+          value={activeIndex}
+          onValueChange={setActiveIndex}
+        >
           <CarouselContent className="h-full">
             {heroImages.map((image, index) => (
               <CarouselItem key={index} className="h-full">
@@ -42,6 +66,8 @@ const Hero = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
+          <CarouselPrevious className="left-4 h-10 w-10 opacity-70 hover:opacity-100" />
+          <CarouselNext className="right-4 h-10 w-10 opacity-70 hover:opacity-100" />
         </Carousel>
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
       </div>

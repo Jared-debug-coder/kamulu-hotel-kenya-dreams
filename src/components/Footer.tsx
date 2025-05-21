@@ -16,17 +16,30 @@ const Footer = () => {
               Experience luxury and comfort in Kamulu, Kasarani Constituency, Nairobi. Our hotel offers exceptional service and amenities for both business and leisure travelers.
             </p>
             <div className="flex space-x-4">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-[#1877F2] hover:text-hotel-gold transition-colors">
-                <Facebook size={20} />
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-hotel-gold transition-colors">
+                <Facebook size={20} className="text-[#1877F2]" />
               </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-[#1DA1F2] hover:text-hotel-gold transition-colors">
-                <Twitter size={20} />
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-hotel-gold transition-colors">
+                <Twitter size={20} className="text-[#1DA1F2]" />
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-[#E4405F] hover:text-hotel-gold transition-colors">
-                <Instagram size={20} />
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-hotel-gold transition-colors">
+                <Instagram size={20} className="text-[#E4405F]" />
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-[#0A66C2] hover:text-hotel-gold transition-colors">
-                <Linkedin size={20} />
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-hotel-gold transition-colors">
+                <Linkedin size={20} className="text-[#0A66C2]" />
+              </a>
+              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="hover:text-hotel-gold transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#FF0000]">
+                  <path d="M12 19c-2.3 0-6.4-.2-8.1-.6-.7-.2-1.2-.7-1.4-1.4-.3-1.1-.5-3.4-.5-5s.2-3.9.5-5c.2-.7.7-1.2 1.4-1.4C5.6 5.2 9.7 5 12 5s6.4.2 8.1.6c.7.2 1.2.7 1.4 1.4.3 1.1.5 3.4.5 5s-.2 3.9-.5 5c-.2.7-.7 1.2-1.4 1.4-1.7.4-5.8.6-8.1.6 0 0 0 0 0 0z"></path>
+                  <polygon points="10 15 15 12 10 9"></polygon>
+                </svg>
+              </a>
+              <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="hover:text-hotel-gold transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#000000]">
+                  <path d="M9 12a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"></path>
+                  <path d="M15 8a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"></path>
+                  <path d="M15 2v12a4 4 0 0 1-4 4"></path>
+                </svg>
               </a>
             </div>
           </div>

@@ -5,6 +5,8 @@ import FeaturedRooms from "@/components/FeaturedRooms";
 import Amenities from "@/components/Amenities";
 import Testimonials from "@/components/Testimonials";
 import CallToAction from "@/components/CallToAction";
+import MeetingsEvents from "@/components/MeetingsEvents";
+import DiningOptions from "@/components/DiningOptions";
 import { useEffect } from "react";
 
 const Index = () => {
@@ -18,6 +20,8 @@ const Index = () => {
       <Hero />
       <AboutPreview />
       <FeaturedRooms />
+      <DiningOptions />
+      <MeetingsEvents />
       <Amenities />
       <Testimonials />
       <CallToAction />
