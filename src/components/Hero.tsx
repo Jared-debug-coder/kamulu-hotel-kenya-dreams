@@ -14,27 +14,28 @@ const Hero = () => {
   
   const heroImages = [
     {
-      src: "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1470&auto=format&fit=crop",
-      alt: "Kamulu Waters Hotel Front View"
+      src: "https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?q=80&w=1470&auto=format&fit=crop",
+      alt: "Kenyan Safari Landscape"
     },
     {
-      src: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?q=80&w=1374&auto=format&fit=crop",
-      alt: "Luxury Accommodation"
+      src: "https://images.unsplash.com/photo-1504432842672-1a79f78e4084?q=80&w=1470&auto=format&fit=crop",
+      alt: "Luxury Kenyan Resort"
     },
     {
-      src: "https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=1374&auto=format&fit=crop",
-      alt: "Family Friendly Rooms"
+      src: "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=1471&auto=format&fit=crop",
+      alt: "Nairobi Skyline View"
     },
     {
-      src: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1470&auto=format&fit=crop",
-      alt: "Hotel Restaurant"
+      src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1470&auto=format&fit=crop",
+      alt: "Kenyan Restaurant Experience"
     },
     {
-      src: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=1498&auto=format&fit=crop",
-      alt: "Event Space"
+      src: "https://images.unsplash.com/photo-1541004995602-b3e898709909?q=80&w=1470&auto=format&fit=crop",
+      alt: "Kenyan Conference Setting"
     }
   ];
 
+  // Auto-advance carousel every 5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
@@ -42,6 +43,15 @@ const Hero = () => {
 
     return () => clearInterval(interval);
   }, [heroImages.length]);
+
+  // Effect to update carousel when activeIndex changes
+  useEffect(() => {
+    const carouselItems = document.querySelectorAll(".embla__slide");
+    if (carouselItems && carouselItems.length > 0) {
+      const targetElement = carouselItems[activeIndex] as HTMLElement;
+      targetElement?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+    }
+  }, [activeIndex]);
 
   return (
     <div className="relative h-screen">

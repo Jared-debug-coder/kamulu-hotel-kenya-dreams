@@ -45,7 +45,7 @@ const MeetingsEvents = () => {
           
           <div className="order-1 md:order-2">
             <img 
-              src="https://images.unsplash.com/photo-1621293954908-907159247fc8?q=80&w=1470&auto=format&fit=crop"
+              src="https://images.unsplash.com/photo-1576502200916-3808e07386a5?q=80&w=1470&auto=format&fit=crop"
               alt="Kamulu Waters Hotel Meeting Room" 
               className="rounded-lg shadow-lg w-full h-[400px] object-cover"
             />
