@@ -1,16 +1,48 @@
 
 import { Link } from 'react-router-dom';
+import { 
+  Carousel, 
+  CarouselContent, 
+  CarouselItem, 
+  CarouselNext, 
+  CarouselPrevious 
+} from "@/components/ui/carousel";
 
 const Hero = () => {
+  const heroImages = [
+    {
+      src: "/hero-image.jpg",
+      alt: "Kamulu Waters Hotel Front View"
+    },
+    {
+      src: "/deluxe-room.jpg",
+      alt: "Luxury Accommodation"
+    },
+    {
+      src: "/family-room.jpg",
+      alt: "Family Friendly Rooms"
+    }
+  ];
+
   return (
     <div className="relative h-screen">
-      {/* Hero Image */}
+      {/* Hero Image Carousel */}
       <div className="absolute inset-0 z-0">
-        <img
-          src="/hero-image.jpg"
-          alt="Kamulu Waters Hotel"
-          className="w-full h-full object-cover"
-        />
+        <Carousel className="w-full h-full" opts={{ loop: true, duration: 50 }}>
+          <CarouselContent className="h-full">
+            {heroImages.map((image, index) => (
+              <CarouselItem key={index} className="h-full">
+                <div className="w-full h-full">
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
       </div>
 
@@ -21,7 +53,7 @@ const Hero = () => {
             Welcome to Kamulu Waters Hotel
           </h1>
           <p className="text-white text-xl md:text-2xl mb-8">
-            Home Away from Home
+            Home Away from Home in Kamulu, Kasarani Constituency, Nairobi
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link to="/about" className="hotel-btn">

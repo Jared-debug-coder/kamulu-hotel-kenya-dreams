@@ -14,6 +14,7 @@ import Gallery from "./pages/Gallery";
 import Contact from "./pages/Contact";
 import Reservation from "./pages/Reservation";
 import NotFound from "./pages/NotFound";
+import ChatBot from "./components/ChatBot";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +38,7 @@ const App = () => (
           </Routes>
         </main>
         <Footer />
+        <ChatBot />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

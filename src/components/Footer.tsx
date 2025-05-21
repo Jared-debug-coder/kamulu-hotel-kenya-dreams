@@ -1,6 +1,6 @@
 
 import { Link } from 'react-router-dom';
-import { PhoneCall, Mail, MapPin, Facebook, Twitter, Instagram, Calendar } from 'lucide-react';
+import { PhoneCall, Mail, MapPin, Facebook, Twitter, Instagram, Calendar, Linkedin } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -13,17 +13,20 @@ const Footer = () => {
           <div>
             <h3 className="text-xl font-semibold mb-4 text-hotel-gold">Kamulu Waters Hotel</h3>
             <p className="mb-4">
-              Experience luxury and comfort in the heart of Kamulu, Nairobi. Our hotel offers exceptional service and amenities for both business and leisure travelers.
+              Experience luxury and comfort in Kamulu, Kasarani Constituency, Nairobi. Our hotel offers exceptional service and amenities for both business and leisure travelers.
             </p>
             <div className="flex space-x-4">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-hotel-gold transition-colors">
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-[#1877F2] hover:text-hotel-gold transition-colors">
                 <Facebook size={20} />
               </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-hotel-gold transition-colors">
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-[#1DA1F2] hover:text-hotel-gold transition-colors">
                 <Twitter size={20} />
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-hotel-gold transition-colors">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-[#E4405F] hover:text-hotel-gold transition-colors">
                 <Instagram size={20} />
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-[#0A66C2] hover:text-hotel-gold transition-colors">
+                <Linkedin size={20} />
               </a>
             </div>
           </div>
@@ -34,7 +37,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-start">
                 <MapPin size={20} className="mr-2 text-hotel-gold mt-1 flex-shrink-0" />
-                <span>123 Kamulu Road, Nairobi, Kenya</span>
+                <span>Kamulu, Kasarani Constituency, Nairobi, Kenya</span>
               </li>
               <li className="flex items-center">
                 <PhoneCall size={20} className="mr-2 text-hotel-gold flex-shrink-0" />
