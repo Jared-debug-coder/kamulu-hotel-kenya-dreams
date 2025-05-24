@@ -15,7 +15,7 @@ const Contact = () => {
       <div className="relative h-80 md:h-96">
         <div className="absolute inset-0">
           <img
-            src="/contact-hero.jpg"
+            src="/phone.webp"
             alt="Contact Us"
             className="w-full h-full object-cover"
           />
@@ -53,7 +53,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <h4 className="font-medium text-hotel-dark mb-1">Phone</h4>
-                      <p className="text-gray-700">+254 712 345 678</p>
+                      <p className="text-gray-700">+254 710464858</p>
                       <p className="text-gray-700">+254 712 345 679</p>
                     </div>
                   </div>
@@ -75,7 +75,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <h4 className="font-medium text-hotel-dark mb-1">Address</h4>
-                      <p className="text-gray-700">123 Kamulu Road</p>
+                      <p className="text-gray-700">123 Kangundo Road</p>
                       <p className="text-gray-700">Kamulu, Nairobi</p>
                       <p className="text-gray-700">Kenya</p>
                     </div>

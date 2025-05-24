@@ -86,7 +86,7 @@ const ChatBot = () => {
     } else if (input.includes('amenities') || input.includes('facilities')) {
       return "We offer various amenities including a swimming pool, restaurant, bar, spa, fitness center, conference facilities, and free Wi-Fi throughout the property.";
     } else if (input.includes('contact') || input.includes('phone') || input.includes('email')) {
-      return "You can contact us at +254 712 345 678 or email us at info@kamuluwatershotel.co.ke. Our front desk is available 24/7 to assist you.";
+      return "You can contact us at +254 710464858 or email us at info@kamuluwatershotel.co.ke. Our front desk is available 24/7 to assist you.";
     } else if (input.includes('hello') || input.includes('hi') || input.includes('hey')) {
       return "Hello! How can I help you with Kamulu Waters Hotel today?";
     } else if (input.includes('thank')) {

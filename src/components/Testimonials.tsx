@@ -5,21 +5,21 @@ const testimonials = [
     name: "John Kamau",
     position: "Business Traveler",
     quote: "Exceptional service and comfortable rooms. The staff went above and beyond to make my business trip a success. I'll definitely be returning on my next visit to Nairobi.",
-    avatar: "/testimonial-1.jpg"
+    avatar: "/jared.jpg"
   },
   {
     id: 2,
     name: "Jane Wanjiku",
     position: "Family Vacation",
     quote: "Our family had an amazing stay at Kamulu Waters Hotel. The rooms were spacious, the food was delicious, and the location was perfect for exploring the city.",
-    avatar: "/testimonial-2.jpg"
+    avatar: "/liza.jpg"
   },
   {
     id: 3,
     name: "David Omondi",
     position: "Weekend Getaway",
     quote: "A perfect weekend retreat! The peaceful environment and excellent amenities made our short stay very relaxing. We particularly enjoyed the restaurant's local dishes.",
-    avatar: "/testimonial-3.jpg"
+    avatar: "/jared.jpg"
   }
 ];
 

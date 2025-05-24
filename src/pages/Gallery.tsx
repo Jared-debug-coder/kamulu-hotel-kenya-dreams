@@ -4,73 +4,73 @@ import { useState, useEffect } from "react";
 const galleryImages = [
   {
     id: 1,
-    src: "/gallery-1.jpg",
+    src: "/rest1.avif",
     alt: "Hotel Exterior",
     category: "hotel"
   },
   {
     id: 2,
-    src: "/gallery-2.jpg",
+    src: "/rest2.avif",
     alt: "Deluxe Room",
     category: "rooms"
   },
   {
     id: 3,
-    src: "/gallery-3.jpg",
+    src: "/rest3.avif",
     alt: "Restaurant",
     category: "dining"
   },
   {
     id: 4,
-    src: "/gallery-4.jpg",
+    src: "/rest4.avif",
     alt: "Executive Suite",
     category: "rooms"
   },
   {
     id: 5,
-    src: "/gallery-5.jpg",
+    src: "/rest5.avif",
     alt: "Hotel Lobby",
     category: "hotel"
   },
   {
     id: 6,
-    src: "/gallery-6.jpg",
+    src: "/rest6.avif",
     alt: "Conference Room",
     category: "events"
   },
   {
     id: 7,
-    src: "/gallery-7.jpg",
+    src: "/rest7.avif",
     alt: "Breakfast Buffet",
     category: "dining"
   },
   {
     id: 8,
-    src: "/gallery-8.jpg",
+    src: "/rest8.avif",
     alt: "Swimming Pool",
     category: "amenities"
   },
   {
     id: 9,
-    src: "/gallery-9.jpg",
+    src: "/rest9.avif",
     alt: "Standard Room",
     category: "rooms"
   },
   {
     id: 10,
-    src: "/gallery-10.jpg",
+    src: "/rest10.avif",
     alt: "Bar Area",
     category: "dining"
   },
   {
     id: 11,
-    src: "/gallery-11.jpg",
+    src: "/rest11.avif",
     alt: "Hotel Gardens",
     category: "hotel"
   },
   {
     id: 12,
-    src: "/gallery-12.jpg",
+    src: "/rest12.avif",
     alt: "Family Room",
     category: "rooms"
   }
@@ -122,7 +122,7 @@ const Gallery = () => {
       <div className="relative h-80 md:h-96">
         <div className="absolute inset-0">
           <img
-            src="/gallery-hero.jpg"
+            src="/rest1.avif"
             alt="Gallery"
             className="w-full h-full object-cover"
           />

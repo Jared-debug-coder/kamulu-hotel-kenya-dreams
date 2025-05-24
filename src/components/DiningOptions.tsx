@@ -22,7 +22,7 @@ const DiningOptions = () => {
             </div>
             
             <img 
-              src="/restaurant.jpg"
+              src="/room1.avif"
               alt="Kamulu Waters Restaurant"
               className="w-full h-64 object-cover rounded-lg mb-6"
             />
@@ -40,7 +40,7 @@ const DiningOptions = () => {
               </ul>
             </div>
             
-            <Link to="/contact" className="hotel-btn inline-block">
+            <Link to="/menu" className="hotel-btn inline-block">
               View Menu
             </Link>
           </div>
@@ -53,7 +53,7 @@ const DiningOptions = () => {
             </div>
             
             <img 
-              src="/bar.jpg"
+              src="/bar.webp"
               alt="Kamulu Waters Bar & Lounge"
               className="w-full h-64 object-cover rounded-lg mb-6"
             />
@@ -71,7 +71,7 @@ const DiningOptions = () => {
               </ul>
             </div>
             
-            <Link to="/contact" className="hotel-btn inline-block">
+            <Link to="/drink-menu" className="hotel-btn inline-block">
               View Drinks Menu
             </Link>
           </div>

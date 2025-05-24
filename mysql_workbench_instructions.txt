@@ -1,0 +1,31 @@
+﻿MySQL Workbench Setup Instructions:
+
+1. First, stop MySQL in XAMPP:
+   - Open XAMPP Control Panel
+   - Click 'Stop' next to MySQL
+   - Wait until it stops completely
+
+2. Open MySQL Workbench and create new connection:
+   - Click the + icon next to 'MySQL Connections'
+   - Enter these settings:
+     * Connection Name: KamuluHotel
+     * Hostname: 127.0.0.1
+     * Port: 3306
+     * Username: root
+     * Password: (create a new password)
+   - Click 'Test Connection' to verify it works
+   - Click 'OK' to save
+
+3. Import the database:
+   - Click on the new connection to open it
+   - Click File > Open SQL Script
+   - Navigate to: D:\projects\Kamulu-waters-hotel-system\mysql_setup.sql
+   - Click 'Execute' (lightning bolt icon)
+
+4. Update Django settings:
+   - Open: D:\projects\kamulu-water-hotel-backend\hotel_system\settings.py
+   - Update the PASSWORD field with your new MySQL password
+
+After completing these steps, your Django application will be connected to MySQL Workbench instead of XAMPP.
+
+Need help? Let me know at any step!

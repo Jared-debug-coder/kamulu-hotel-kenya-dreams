@@ -14,25 +14,50 @@ const Hero = () => {
   
   const heroImages = [
     {
-      src: "https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?q=80&w=1470&auto=format&fit=crop",
-      alt: "Kenyan Safari Landscape"
+      src: "/home.avif"
+      
     },
     {
-      src: "https://images.unsplash.com/photo-1504432842672-1a79f78e4084?q=80&w=1470&auto=format&fit=crop",
-      alt: "Luxury Kenyan Resort"
+      src: "/hero1.jpg"
+      
     },
     {
-      src: "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=1471&auto=format&fit=crop",
-      alt: "Nairobi Skyline View"
+      src: "/hero2.jpg"
+      
     },
     {
-      src: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1470&auto=format&fit=crop",
-      alt: "Kenyan Restaurant Experience"
+      src: "/hero3.jpg"
+      
+    },
+      {
+      src: "/hero4.jpg"
+      
     },
     {
-      src: "https://images.unsplash.com/photo-1541004995602-b3e898709909?q=80&w=1470&auto=format&fit=crop",
-      alt: "Kenyan Conference Setting"
+      src: "/hero5.jpg"
+      
+    },
+    {
+      src: "/hero6.jpg"
+      
+    },
+    {
+      src: "/hero7.jpg"
+      
+    },
+    {
+      src: "/hero8.jpg"
+      
+    },
+    {
+      src: "/hero9.jpg"
+      
+    },
+    {
+      src: "/hero10.webp"
+      
     }
+    
   ];
 
   // Auto-advance carousel every 5 seconds
@@ -55,30 +80,15 @@ const Hero = () => {
 
   return (
     <div className="relative h-screen">
-      {/* Hero Image Carousel */}
-      <div className="absolute inset-0 z-0">
-        <Carousel 
-          className="w-full h-full" 
-          opts={{ loop: true, duration: 50 }}
-        >
-          <CarouselContent className="h-full">
-            {heroImages.map((image, index) => (
-              <CarouselItem key={index} className="h-full">
-                <div className="w-full h-full">
-                  <img
-                    src={image.src}
-                    alt={image.alt}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious className="left-4 h-10 w-10 opacity-70 hover:opacity-100" />
-          <CarouselNext className="right-4 h-10 w-10 opacity-70 hover:opacity-100" />
-        </Carousel>
-        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-      </div>
+         {/* Hero Image Carousel */}
+    <div className="absolute inset-0 z-0 overflow-hidden">
+      <img
+        src={heroImages[activeIndex].src}
+        className="w-full h-full object-cover"
+        alt="Hero"
+      />
+      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+    </div>
 
       {/* Hero Content */}
       <div className="relative z-10 flex items-center justify-center h-full text-center px-4">
@@ -87,7 +97,7 @@ const Hero = () => {
             Welcome to Kamulu Waters Hotel
           </h1>
           <p className="text-white text-xl md:text-2xl mb-8">
-            Home Away from Home in Kamulu, Kasarani Constituency, Nairobi
+            Home Away from Home in Kamulu
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link to="/about" className="hotel-btn">
