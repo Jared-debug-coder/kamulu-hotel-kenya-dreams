@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import { getImageUrl } from "@/lib/utils";
 
 
 interface RoomType {
@@ -25,7 +25,7 @@ const roomsData: RoomType[] = [
     capacity: 2,
     size: 25,
     bedType: "1 Queen Bed",
-    image: "/room1.avif",
+    image: getImageUrl("room1.avif"),
     amenities: ["Free Wi-Fi", "Air Conditioning", "TV", "Private Bathroom", "Work Desk"]
   },
   {
@@ -36,7 +36,7 @@ const roomsData: RoomType[] = [
     capacity: 2,
     size: 32,
     bedType: "1 King Bed",
-    image: "/room2.avif",
+    image: getImageUrl("room2.avif"),
     amenities: ["Free Wi-Fi", "Air Conditioning", "Flat-screen TV", "Private Bathroom", "Coffee Maker", "Safe", "Minibar"]
   },
   {
@@ -47,7 +47,7 @@ const roomsData: RoomType[] = [
     capacity: 2,
     size: 48,
     bedType: "1 King Bed",
-    image: "/room3.avif",
+    image: getImageUrl("room3.avif"),
     amenities: ["Free Wi-Fi", "Air Conditioning", "55\" Smart TV", "Living Area", "Premium Bathroom", "Coffee Maker", "Safe", "Minibar", "Balcony"]
   },
   {
@@ -58,7 +58,7 @@ const roomsData: RoomType[] = [
     capacity: 4,
     size: 45,
     bedType: "1 King Bed + 2 Twin Beds",
-    image: "/room4.avif",
+    image: getImageUrl("room4.avif"),
     amenities: ["Free Wi-Fi", "Air Conditioning", "Flat-screen TV", "Family Bathroom", "Coffee Maker", "Safe", "Refrigerator"]
   },
   {
@@ -69,7 +69,7 @@ const roomsData: RoomType[] = [
     capacity: 4,
     size: 75,
     bedType: "1 King Bed + Sofa Bed",
-    image: "/room5.avif",
+    image: getImageUrl("room5.avif"),
     amenities: ["Free Wi-Fi", "Air Conditioning", "65\" Smart TV", "Separate Living Room", "Dining Area", "Luxury Bathroom with Jacuzzi", "Kitchenette", "Premium Minibar", "Private Balcony"]
   }
 ];
@@ -100,7 +100,7 @@ const Accommodation = () => {
       <div className="relative h-80 md:h-96">
         <div className="absolute inset-0">
           <img
-            src="/home.avif"
+            src={getImageUrl("home.avif")}
             alt="Accommodation"
             className="w-full h-full object-cover"
           />

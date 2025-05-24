@@ -8,53 +8,54 @@ import {
   CarouselPrevious 
 } from "@/components/ui/carousel";
 import { useEffect, useState } from 'react';
+import { getImageUrl } from '@/lib/utils';
 
 const Hero = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   
   const heroImages = [
     {
-      src: "/home.avif"
+      src: getImageUrl("home.avif")
       
     },
     {
-      src: "/hero1.jpg"
+      src: getImageUrl("hero1.jpg")
       
     },
     {
-      src: "/hero2.jpg"
+      src: getImageUrl("hero2.jpg")
       
     },
     {
-      src: "/hero3.jpg"
-      
-    },
-      {
-      src: "/hero4.jpg"
+      src: getImageUrl("hero3.jpg")
       
     },
     {
-      src: "/hero5.jpg"
+      src: getImageUrl("hero4.jpg")
       
     },
     {
-      src: "/hero6.jpg"
+      src: getImageUrl("hero5.jpg")
       
     },
     {
-      src: "/hero7.jpg"
+      src: getImageUrl("hero6.jpg")
       
     },
     {
-      src: "/hero8.jpg"
+      src: getImageUrl("hero7.jpg")
       
     },
     {
-      src: "/hero9.jpg"
+      src: getImageUrl("hero8.jpg")
       
     },
     {
-      src: "/hero10.webp"
+      src: getImageUrl("hero9.jpg")
+      
+    },
+    {
+      src: getImageUrl("hero10.webp")
       
     }
     

@@ -1,4 +1,5 @@
 import React from 'react';
+import { getImageUrl } from '@/lib/utils';
 
 const menuData = [
   {
@@ -7,19 +8,19 @@ const menuData = [
       {
         name: 'Kenyan Breakfast Platter',
         description: 'Eggs, sausage, mandazi, and chai.',
-        image: '/Kenyan Breakfast Platter.jpg',
+        image: getImageUrl('Kenyan Breakfast Platter.jpg'),
          price: 'Ksh 600',
       },
       {
         name: 'Omena & Ugali',
         description: 'Traditional lake fish with ugali and greens.',
-        image: '/Omena & Ugali.jpg',
+        image: getImageUrl('Omena & Ugali.jpg'),
          price: 'Ksh 600',
       },
       {
         name: 'Pancakes & Fruit',
         description: 'Served with honey and seasonal fruit.',
-        image: '/Pancakes & Fruit.jpg',
+        image: getImageUrl('Pancakes & Fruit.jpg'),
          price: 'Ksh 600',
       },
     ],
@@ -30,19 +31,19 @@ const menuData = [
       {
         name: 'Nyama Choma Platter',
         description: 'Roasted beef or goat with kachumbari.',
-        image: '/nyamachoma.jpg',
+        image: getImageUrl('nyamachoma.jpg'),
          price: 'Ksh 600',
       },
       {
         name: 'Chicken Biryani',
         description: 'Aromatic spiced rice with marinated chicken.',
-        image: '/ChickenBiryani.jpg',
+        image: getImageUrl('ChickenBiryani.jpg'),
          price: 'Ksh 600',
       },
       {
         name: 'Tilapia Fillet',
         description: 'Grilled or fried with ugali and greens.',
-        image: '/Tilapia Fillet.jpg',
+        image: getImageUrl('Tilapia Fillet.jpg'),
          price: 'Ksh 600',
       },
     ],
@@ -53,19 +54,19 @@ const menuData = [
       {
         name: 'Beef Stew & Chapati',
         description: 'Slow-cooked beef with soft chapatis.',
-        image: '/Beef Stew & Chapati.jpg',
+        image: getImageUrl('Beef Stew & Chapati.jpg'),
          price: 'Ksh 600',
       },
       {
         name: 'Vegetable Curry',
         description: 'Served with rice or chapati.',
-        image: '/Vegetable Curry.jpg',
+        image: getImageUrl('Vegetable Curry.jpg'),
          price: 'Ksh 600',
       },
       {
         name: 'Grilled Chicken',
         description: 'With mashed potatoes and sautéed vegetables.',
-        image: '/Grilled Chicken.jpg',
+        image: getImageUrl('Grilled Chicken.jpg'),
          price: 'Ksh 600',
       },
     ],
@@ -76,19 +77,19 @@ const menuData = [
       {
         name: 'Fresh Passion Juice',
         description: 'Cold-pressed and refreshing.',
-        image: '/Fresh Passion Juice.jpg',
+        image: getImageUrl('Fresh Passion Juice.jpg'),
          price: 'Ksh 600',
       },
       {
         name: 'Dawa',
         description: 'A hot drink made with honey, lemon, and ginger.',
-        image: '/Dawa2.jpg',
+        image: getImageUrl('Dawa2.jpg'),
          price: 'Ksh 600',
       },
       {
         name: 'Milkshake (Vanilla/Strawberry/Chocolate)',
         description: 'Thick and creamy milkshakes in multiple flavors.',
-        image: '/Milkshake.jpg',
+        image: getImageUrl('Milkshake.jpg'),
          price: 'Ksh 600',
       },
     ],
@@ -99,19 +100,19 @@ const menuData = [
       {
         name: 'Chocolate Cake',
         description: 'Rich, moist chocolate cake with fudge icing.',
-        image: '/Chocolate Cake.jpg',
+        image: getImageUrl('Chocolate Cake.jpg'),
          price: 'Ksh 600',
       },
       {
         name: 'Fruit Salad',
         description: 'Fresh mixed fruit topped with mint.',
-        image: '/Fruit Salad.jpg',
+        image: getImageUrl('Fruit Salad.jpg'),
          price: 'Ksh 600',
       },
       {
         name: 'Ice Cream (2 Scoops)',
         description: 'Choice of vanilla, strawberry, or chocolate.',
-        image: '/Ice Cream.jpg',
+        image: getImageUrl('Ice Cream.jpg'),
          price: 'Ksh 600',
       },
     ],

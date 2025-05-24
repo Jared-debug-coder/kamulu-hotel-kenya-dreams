@@ -1,76 +1,77 @@
 
 import { useState, useEffect } from "react";
+import { getImageUrl } from "@/lib/utils";
 
 const galleryImages = [
   {
     id: 1,
-    src: "/rest1.avif",
+    src: getImageUrl("rest1.avif"),
     alt: "Hotel Exterior",
     category: "hotel"
   },
   {
     id: 2,
-    src: "/rest2.avif",
+    src: getImageUrl("rest2.avif"),
     alt: "Deluxe Room",
     category: "rooms"
   },
   {
     id: 3,
-    src: "/rest3.avif",
+    src: getImageUrl("rest3.avif"),
     alt: "Restaurant",
     category: "dining"
   },
   {
     id: 4,
-    src: "/rest4.avif",
+    src: getImageUrl("rest4.avif"),
     alt: "Executive Suite",
     category: "rooms"
   },
   {
     id: 5,
-    src: "/rest5.avif",
+    src: getImageUrl("rest5.avif"),
     alt: "Hotel Lobby",
     category: "hotel"
   },
   {
     id: 6,
-    src: "/rest6.avif",
+    src: getImageUrl("rest6.avif"),
     alt: "Conference Room",
     category: "events"
   },
   {
     id: 7,
-    src: "/rest7.avif",
+    src: getImageUrl("rest7.avif"),
     alt: "Breakfast Buffet",
     category: "dining"
   },
   {
     id: 8,
-    src: "/rest8.avif",
+    src: getImageUrl("rest8.avif"),
     alt: "Swimming Pool",
     category: "amenities"
   },
   {
     id: 9,
-    src: "/rest9.avif",
+    src: getImageUrl("rest9.avif"),
     alt: "Standard Room",
     category: "rooms"
   },
   {
     id: 10,
-    src: "/rest10.avif",
+    src: getImageUrl("rest10.avif"),
     alt: "Bar Area",
     category: "dining"
   },
   {
     id: 11,
-    src: "/rest11.avif",
+    src: getImageUrl("rest11.avif"),
     alt: "Hotel Gardens",
     category: "hotel"
   },
   {
     id: 12,
-    src: "/rest12.avif",
+    src: getImageUrl("rest12.avif"),
     alt: "Family Room",
     category: "rooms"
   }
@@ -122,7 +123,7 @@ const Gallery = () => {
       <div className="relative h-80 md:h-96">
         <div className="absolute inset-0">
           <img
-            src="/rest1.avif"
+            src={getImageUrl("rest1.avif")}
             alt="Gallery"
             className="w-full h-full object-cover"
           />

@@ -1,5 +1,6 @@
 
 import { useEffect } from "react";
+import { getImageUrl } from "@/lib/utils";
 
 const About = () => {
   useEffect(() => {
@@ -13,7 +14,7 @@ const About = () => {
       <div className="relative h-80 md:h-96">
         <div className="absolute inset-0">
           <img
-            src="/rest1.avif"
+            src={getImageUrl("rest1.avif")}
             alt="About Kamulu Waters Hotel"
             className="w-full h-full object-cover"
           />
@@ -48,7 +49,7 @@ const About = () => {
             </div>
             <div className="relative">
               <img
-                src="/home.avif"
+                src={getImageUrl("home.avif")}
                 alt="Hotel History"
                 className="w-full h-auto rounded-lg shadow-lg"
               />
@@ -111,22 +112,22 @@ const About = () => {
               {
                 name: "Jared Ombongi",
                 position: "Founder & Managing Director",
-                image: "/jared.jpg",
+                image: getImageUrl("jared.jpg"),
               },
               {
                 name: "Elizah Njoki",
                 position: "Hotel Manager",
-                image: "/liza.jpg",
+                image: getImageUrl("liza.jpg"),
               },
               {
                 name: "Daniel Njoroge",
                 position: "Executive Chef",
-                image: "/jared.jpg",
+                image: getImageUrl("jared.jpg"),
               },
               {
                 name: "Ashley njoki",
                 position: "Customer Relations Manager",
-                image: "/liza.jpg",
+                image: getImageUrl("liza.jpg"),
               },
             ].map((member, index) => (
               <div key={index} className="text-center">

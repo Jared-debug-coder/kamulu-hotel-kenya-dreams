@@ -1,4 +1,5 @@
 import React from 'react';
+import { getImageUrl } from '@/lib/utils';
 
 const drinkMenuData = [
   {
@@ -7,19 +8,19 @@ const drinkMenuData = [
       {
         name: 'Classic Mojito',
         description: 'White rum, mint, lime, sugar, and soda water.',
-        image: '/Classic Mojito.jpg',
+        image: getImageUrl('Classic Mojito.jpg'),
         price: 'Ksh 600', 
       },
       {
         name: 'Dawa',
         description: 'Vodka, honey, lime, and crushed ice.',
-        image: '/Dawa.jpg',
+        image: getImageUrl('Dawa.jpg'),
          price: 'Ksh 600',
       },
       {
         name: 'Tequila Sunrise',
         description: 'Tequila, orange juice, grenadine syrup.',
-        image: '/Tequila Sunrise.jpg',
+        image: getImageUrl('Tequila Sunrise.jpg'),
          price: 'Ksh 600',
       },
     ],
@@ -30,13 +31,13 @@ const drinkMenuData = [
       {
         name: 'Chardonnay (Glass/Bottle)',
         description: 'Crisp white wine with hints of citrus.',
-        image: '/Chardonnay.jpg',
+        image: getImageUrl('Chardonnay.jpg'),
          price: 'Ksh 600',
       },
       {
         name: 'Merlot (Glass/Bottle)',
         description: 'Smooth red wine with soft tannins.',
-        image: '/Merlot.jpg',
+        image: getImageUrl('Merlot.jpg'),
          price: 'Ksh 600',
       },
     ],
@@ -47,19 +48,19 @@ const drinkMenuData = [
       {
         name: 'Johnnie Walker Black Label',
         description: 'Rich, smoky Scotch whisky.',
-        image: '/Johnnie Walker Black Label.webp',
+        image: getImageUrl('Johnnie Walker Black Label.webp'),
          price: 'Ksh 600',
       },
       {
         name: 'Tanqueray Gin',
         description: 'London dry gin with strong juniper notes.',
-        image: '/Tanqueray Gin.jpg',
+        image: getImageUrl('Tanqueray Gin.jpg'),
          price: 'Ksh 600',
       },
       {
         name: 'Hennessy VS',
         description: 'Smooth Cognac with vanilla and oak.',
-        image: '/Hennessy VS.jpg',
+        image: getImageUrl('Hennessy VS.jpg'),
          price: 'Ksh 600',
       },
     ],
@@ -70,19 +71,19 @@ const drinkMenuData = [
       {
         name: 'Tusker Lager',
         description: 'Kenya’s classic lager.',
-        image: '/Tusker Lager.jpg',
+        image: getImageUrl('Tusker Lager.jpg'),
          price: 'Ksh 600',
       },
       {
         name: 'White Cap Lager',
         description: 'Smooth and refreshing lager.',
-        image: '/White Cap Lager.jpg',
+        image: getImageUrl('White Cap Lager.jpg'),
          price: 'Ksh 600',
       },
       {
         name: 'Heineken',
         description: 'Premium imported lager.',
-        image: '/Heineken.jpg',
+        image: getImageUrl('Heineken.jpg'),
          price: 'Ksh 600',
       },
     ],
@@ -93,19 +94,19 @@ const drinkMenuData = [
       {
         name: 'Mocktail Punch',
         description: 'Fruity blend of tropical juices.',
-        image: '/Mocktail Punch.jpg',
+        image: getImageUrl('Mocktail Punch.jpg'),
          price: 'Ksh 600',
       },
       {
         name: 'Fresh Juice',
         description: 'Choice of mango, pineapple, passion.',
-        image: '/Fresh Juice.jpg',
+        image: getImageUrl('Fresh Juice.jpg'),
          price: 'Ksh 600',
       },
       {
         name: 'Soft Drinks',
         description: 'Coca-Cola, Fanta, Sprite, Stoney.',
-        image: '/Soft Drinks.jpg',
+        image: getImageUrl('Soft Drinks.jpg'),
          price: 'Ksh 600',
       },
     ],
@@ -116,19 +117,19 @@ const drinkMenuData = [
       {
         name: 'Spicy Chicken Wings',
         description: 'Served with garlic aioli.',
-        image: '/Spicy Chicken Wings.webp',
+        image: getImageUrl('Spicy Chicken Wings.webp'),
          price: 'Ksh 600',
       },
       {
         name: 'Loaded Fries',
         description: 'Topped with cheese, bacon & jalapeños.',
-        image: '/Loaded Fries.jpg',
+        image: getImageUrl('Loaded Fries.jpg'),
          price: 'Ksh 600',
       },
       {
         name: 'Beef Samosas',
         description: 'Handmade and served with chutney.',
-        image: '/Beef Samosas.jpg',
+        image: getImageUrl('Beef Samosas.jpg'),
          price: 'Ksh 600',
       },
     ],

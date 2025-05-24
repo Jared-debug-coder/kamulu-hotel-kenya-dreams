@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import { getImageUrl } from '@/lib/utils';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -40,7 +41,7 @@ const Navbar = () => {
       <div className="hotel-container flex justify-between items-center">
         <Link to="/" className="flex items-center">
           <div className="text-2xl font-bold text-hotel-gold">
-            <img src="/logo.png" alt="Kamulu Waters Hotel" className="h-16" />
+            <img src={getImageUrl('logo.png')} alt="Kamulu Waters Hotel" className="h-16" />
           </div>
         </Link>
 
