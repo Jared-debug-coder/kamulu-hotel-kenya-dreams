@@ -8,7 +8,7 @@ const CallToAction = () => {
       <div 
         className="absolute inset-0 z-10" 
         style={{ 
-          backgroundImage: `url('${getImageUrl('cta-bg.jpg')}')`,
+          backgroundImage: `url('${getImageUrl('rest1.avif')}')`,
           backgroundPosition: "center", 
           backgroundSize: "cover", 
           opacity: 0.2 
