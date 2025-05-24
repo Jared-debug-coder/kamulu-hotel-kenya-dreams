@@ -5,7 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: '/kamulu-water-hotel-system/',
+  base: '/kamulu-hotel-kenya-dreams/',
   build: {
     outDir: 'dist',
   },
