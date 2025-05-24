@@ -55,7 +55,6 @@ export interface Order {
   created_at?: string;
   updated_at?: string;
 }
-
 export interface ApiError {
   message: string;
   status?: number;
@@ -79,7 +78,6 @@ api.interceptors.request.use((config) => {
   }
   return config;
 });
-
 // API functions
 export const roomApi = {
   // Get all rooms
@@ -229,8 +227,39 @@ export const orderApi = {
       } as ApiError;
     }
   },
+  
+  // Submit order (for menu ordering)
+  submitOrder: async (orderData: OrderData): Promise<any> => {
+    try {
+      // Format the order data for the API
+      const formattedOrder = {
+        customer_name: orderData.customerName,
+        phone_number: orderData.phoneNumber,
+        special_instructions: orderData.notes,
+        payment_method: orderData.paymentMethod === 'pay_now' ? 'MPESA' : 'CASH',
+        order_items: [
+          {
+            name: orderData.itemName,
+            quantity: orderData.quantity,
+            price: parseInt(orderData.price.replace(/[^0-9]/g, '')) || 0,
+            category: orderData.category.toUpperCase().includes('DRINK') ? 'DRINK' : 'FOOD'
+          }
+        ],
+        total_amount: (parseInt(orderData.price.replace(/[^0-9]/g, '')) || 0) * orderData.quantity
+      };
+      
+      const response = await api.post('/orders/', formattedOrder);
+      return response.data;
+    } catch (error: any) {
+      console.error('Error submitting order:', error);
+      throw {
+        message: 'Failed to submit order',
+        status: error.response?.status,
+        details: error.response?.data,
+      } as ApiError;
+    }
+  }
 };
-
 // Utilities
 export const formatDateForApi = (date: Date): string => {
   return date.toISOString().split('T')[0]; // YYYY-MM-DD format

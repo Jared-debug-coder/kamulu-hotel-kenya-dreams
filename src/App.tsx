@@ -15,6 +15,8 @@ import Contact from "./pages/Contact";
 import Reservation from "./pages/Reservation";
 import NotFound from "./pages/NotFound";
 import ChatBot from "./components/ChatBot";
+import Menu from "./components/menu";
+import DrinkMenu from "./components/drink-menu";
 
 const queryClient = new QueryClient();
 
@@ -34,6 +36,8 @@ const App = () => (
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/reservation" element={<Reservation />} />
+             <Route path="/menu" element={<Menu />} />           {/* <-- Add this */}
+             <Route path="/drink-menu" element={<DrinkMenu />} /> {/* <-- And this */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>

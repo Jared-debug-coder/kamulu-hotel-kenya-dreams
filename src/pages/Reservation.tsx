@@ -1,8 +1,12 @@
 
 import { useEffect } from "react";
 import BookingForm from "@/components/BookingForm";
+import { useLocation } from "react-router-dom";
+
 
 const Reservation = () => {
+   const location = useLocation(); // <-- Add this line
+  const selectedRoom = location.state?.room; 
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = "Reservation | Kamulu Waters Hotel";
@@ -14,7 +18,7 @@ const Reservation = () => {
       <div className="relative h-80 md:h-96">
         <div className="absolute inset-0">
           <img
-            src="/reservation-hero.jpg"
+            src="/room4.avif"
             alt="Make a Reservation"
             className="w-full h-full object-cover"
           />

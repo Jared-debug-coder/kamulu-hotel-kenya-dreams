@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -19,7 +18,7 @@ const roomsData: Room[] = [
     name: "Deluxe Room",
     description: "Spacious room with modern amenities and beautiful views.",
     price: 8500,
-    image: "/deluxe-room.jpg",
+    image: "/room1.avif",
     capacity: 2,
     size: 32,
     amenities: ["Free Wi-Fi", "Air Conditioning", "Flat-screen TV", "Private Bathroom"]
@@ -29,7 +28,7 @@ const roomsData: Room[] = [
     name: "Executive Suite",
     description: "Luxurious suite with separate living area and premium amenities.",
     price: 15000,
-    image: "/executive-suite.jpg",
+    image: "/room2.avif",
     capacity: 2,
     size: 48,
     amenities: ["Free Wi-Fi", "Air Conditioning", "Mini Bar", "Living Area", "Balcony"]
@@ -39,7 +38,7 @@ const roomsData: Room[] = [
     name: "Family Room",
     description: "Perfect for families, with spacious accommodation for up to 4 guests.",
     price: 12000,
-    image: "/family-room.jpg",
+    image: "/room3.avif",
     capacity: 4,
     size: 45,
     amenities: ["Free Wi-Fi", "Air Conditioning", "Flat-screen TV", "Family Bathroom"]
@@ -48,6 +47,21 @@ const roomsData: Room[] = [
 
 const FeaturedRooms = () => {
   const [hoveredRoom, setHoveredRoom] = useState<number | null>(null);
+
+  // Modal state and handlers
+  const [selectedRoom, setSelectedRoom] = useState<Room | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = (room: Room) => {
+    setSelectedRoom(room);
+    setIsModalOpen(true);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    document.body.style.overflow = 'auto';
+  };
 
   return (
     <section className="section-padding bg-gray-50">
@@ -103,14 +117,15 @@ const FeaturedRooms = () => {
                   )}
                 </div>
                 <div className="flex justify-between items-center">
-                  <Link
-                    to={`/accommodation/${room.id}`}
+                  <button
+                    onClick={() => openModal(room)}
                     className="text-hotel-gold hover:underline font-medium"
                   >
                     View Details
-                  </Link>
+                  </button>
                   <Link
                     to="/reservation"
+                    state={{ room }}
                     className="bg-hotel-gold hover:bg-hotel-accent text-white py-2 px-4 rounded transition-colors"
                   >
                     Book Now
@@ -130,6 +145,52 @@ const FeaturedRooms = () => {
           </Link>
         </div>
       </div>
+
+      {/* Modal for room details */}
+      {isModalOpen && selectedRoom && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60">
+          <div className="bg-white rounded-lg shadow-lg max-w-lg w-full p-6 relative">
+            <button
+              onClick={closeModal}
+              className="absolute top-4 right-4 text-gray-500 hover:text-hotel-gold text-2xl"
+              aria-label="Close"
+            >
+              &times;
+            </button>
+            <img
+              src={selectedRoom.image}
+              alt={selectedRoom.name}
+              className="w-full h-56 object-cover rounded mb-4"
+            />
+            <h2 className="text-2xl font-bold mb-2">{selectedRoom.name}</h2>
+            <p className="mb-4">{selectedRoom.description}</p>
+            <div className="flex items-center justify-between mb-4 text-sm text-gray-600">
+              <span>{selectedRoom.capacity} Guests</span>
+              <span>{selectedRoom.size} m²</span>
+            </div>
+            <div className="flex flex-wrap gap-2 mb-4">
+              {selectedRoom.amenities.map((amenity, idx) => (
+                <span
+                  key={idx}
+                  className="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full"
+                >
+                  {amenity}
+                </span>
+              ))}
+            </div>
+            <div className="flex justify-end">
+              <Link
+                to="/reservation"
+                state={{ room: selectedRoom }}
+                className="bg-hotel-gold hover:bg-hotel-accent text-white py-2 px-4 rounded transition-colors"
+                onClick={closeModal}
+              >
+                Book Now
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

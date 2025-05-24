@@ -1,6 +1,7 @@
 
 import { useEffect } from "react";
 import { Utensils, Coffee, Wifi, Car, WashingMachine, Users, Dumbbell, PersonStanding, Tv, UtensilsCrossed, Plug, Shield } from 'lucide-react';
+import { getImageUrl } from "@/lib/utils";
 
 const amenitiesData = [
   {
@@ -77,7 +78,7 @@ const AmenitiesPage = () => {
       <div className="relative h-80 md:h-96">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1568495248636-6432b97bd949?q=80&w=1974&auto=format&fit=crop"
+            src={getImageUrl("rest1.avif")} /* Replace with an appropriate amenities image from your public folder */
             alt="Amenities"
             className="w-full h-full object-cover"
           />

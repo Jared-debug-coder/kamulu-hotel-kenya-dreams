@@ -1,5 +1,6 @@
 
 import { Link } from 'react-router-dom';
+import { getImageUrl } from '@/lib/utils';
 
 const AboutPreview = () => {
   return (
@@ -22,12 +23,12 @@ const AboutPreview = () => {
           </div>
           <div className="relative">
             <img
-              src="/about-image.jpg"
+              src={getImageUrl('rest2.avif')}
               alt="Hotel Exterior"
               className="w-full h-auto rounded-lg shadow-lg"
             />
             <div className="absolute -bottom-6 -left-6 bg-hotel-gold text-white p-6 rounded-lg shadow-lg hidden md:block">
-              <p className="text-lg font-semibold">15+ Years</p>
+              <p className="text-lg font-semibold">2+ Years</p>
               <p>Of Excellence</p>
             </div>
           </div>

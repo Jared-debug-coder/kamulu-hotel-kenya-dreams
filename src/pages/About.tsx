@@ -1,5 +1,6 @@
 
 import { useEffect } from "react";
+import { getImageUrl } from "@/lib/utils";
 
 const About = () => {
   useEffect(() => {
@@ -13,7 +14,7 @@ const About = () => {
       <div className="relative h-80 md:h-96">
         <div className="absolute inset-0">
           <img
-            src="/about-hero.jpg"
+            src={getImageUrl("rest1.avif")}
             alt="About Kamulu Waters Hotel"
             className="w-full h-full object-cover"
           />
@@ -37,10 +38,10 @@ const About = () => {
               <h2 className="heading-md text-hotel-gold mb-2">Our Story</h2>
               <h3 className="heading-lg text-hotel-dark mb-6">A Legacy of Kenyan Hospitality</h3>
               <p className="text-gray-700 mb-4 leading-relaxed">
-                Established in 2010, Kamulu Waters Hotel began as a small family-owned guest house in the serene area of Kamulu, Nairobi. What started as a modest accommodation option for travelers has grown into one of the most respected hotel establishments in the region.
+                Established in 2023, Kamulu Waters Hotel began as a small family-owned guest house in the serene area of Kamulu, Nairobi. What started as a modest accommodation option for travelers has grown into one of the most respected hotel establishments in the region.
               </p>
               <p className="text-gray-700 mb-4 leading-relaxed">
-                Our founder, Mr. James Mwangi, had a vision to create a space where guests could experience authentic Kenyan hospitality while enjoying modern comforts and amenities. His dedication to service excellence and attention to detail continue to guide our operations to this day.
+                Our founder, Mr. Jared Ombongi, had a vision to create a space where guests could experience authentic Kenyan hospitality while enjoying modern comforts and amenities. His dedication to service excellence and attention to detail continue to guide our operations to this day.
               </p>
               <p className="text-gray-700 leading-relaxed">
                 Over the years, we have expanded our facilities, enhanced our services, and built a loyal customer base of both local and international guests. Throughout our growth, we have remained committed to our core values of hospitality, integrity, and community engagement.
@@ -48,7 +49,7 @@ const About = () => {
             </div>
             <div className="relative">
               <img
-                src="/history-image.jpg"
+                src={getImageUrl("home.avif")}
                 alt="Hotel History"
                 className="w-full h-auto rounded-lg shadow-lg"
               />
@@ -109,24 +110,24 @@ const About = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
-                name: "James Mwangi",
+                name: "Jared Ombongi",
                 position: "Founder & Managing Director",
-                image: "/team-1.jpg",
+                image: getImageUrl("jared.jpg"),
               },
               {
-                name: "Sarah Ochieng",
+                name: "Elizah Njoki",
                 position: "Hotel Manager",
-                image: "/team-2.jpg",
+                image: getImageUrl("liza.jpg"),
               },
               {
                 name: "Daniel Njoroge",
                 position: "Executive Chef",
-                image: "/team-3.jpg",
+                image: getImageUrl("jared.jpg"),
               },
               {
-                name: "Grace Wanjiru",
+                name: "Ashley njoki",
                 position: "Customer Relations Manager",
-                image: "/team-4.jpg",
+                image: getImageUrl("liza.jpg"),
               },
             ].map((member, index) => (
               <div key={index} className="text-center">

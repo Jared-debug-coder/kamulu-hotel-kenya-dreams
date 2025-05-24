@@ -7,6 +7,7 @@ import { Label } from "../components/ui/label";
 import { toast } from "../components/ui/use-toast";
 import { RadioGroup, RadioGroupItem } from "../components/ui/radio-group";
 import { orderApi } from '../services/orderApi';
+import { getImageUrl } from '@/lib/utils';
 
 interface DrinkItem {
   name: string;
@@ -33,25 +34,25 @@ interface OrderData {
 }
 
 const drinkMenuData: DrinkCategory[] = [
-  {
-    category: 'Cocktails',
-    items: [
-      {
-        name: 'Classic Mojito',
-        description: 'White rum, mint, lime, sugar, and soda water.',
-        image: '/Classic Mojito.jpg',
+    {
+      category: 'Cocktails',
+      items: [
+        {
+          name: 'Classic Mojito',
+          description: 'White rum, mint, lime, sugar, and soda water.',
+          image: getImageUrl('Classic Mojito.jpg'),
         price: 'Ksh 600', 
       },
       {
-        name: 'Dawa',
-        description: 'Vodka, honey, lime, and crushed ice.',
-        image: '/Dawa.jpg',
+          name: 'Dawa',
+          description: 'Vodka, honey, lime, and crushed ice.',
+          image: getImageUrl('Dawa.jpg'),
          price: 'Ksh 600',
       },
       {
-        name: 'Tequila Sunrise',
-        description: 'Tequila, orange juice, grenadine syrup.',
-        image: '/Tequila Sunrise.jpg',
+          name: 'Tequila Sunrise',
+          description: 'Tequila, orange juice, grenadine syrup.',
+          image: getImageUrl('Tequila Sunrise.jpg'),
          price: 'Ksh 600',
       },
     ],
@@ -60,15 +61,15 @@ const drinkMenuData: DrinkCategory[] = [
     category: 'Wines',
     items: [
       {
-        name: 'Chardonnay (Glass/Bottle)',
-        description: 'Crisp white wine with hints of citrus.',
-        image: '/Chardonnay.jpg',
+          name: 'Chardonnay (Glass/Bottle)',
+          description: 'Crisp white wine with hints of citrus.',
+          image: getImageUrl('Chardonnay.jpg'),
          price: 'Ksh 600',
       },
       {
-        name: 'Merlot (Glass/Bottle)',
-        description: 'Smooth red wine with soft tannins.',
-        image: '/Merlot.jpg',
+          name: 'Merlot (Glass/Bottle)',
+          description: 'Smooth red wine with soft tannins.',
+          image: getImageUrl('Merlot.jpg'),
          price: 'Ksh 600',
       },
     ],
@@ -77,21 +78,21 @@ const drinkMenuData: DrinkCategory[] = [
     category: 'Spirits',
     items: [
       {
-        name: 'Johnnie Walker Black Label',
-        description: 'Rich, smoky Scotch whisky.',
-        image: '/Johnnie Walker Black Label.webp',
+          name: 'Johnnie Walker Black Label',
+          description: 'Rich, smoky Scotch whisky.',
+          image: getImageUrl('Johnnie Walker Black Label.webp'),
          price: 'Ksh 600',
       },
       {
-        name: 'Tanqueray Gin',
-        description: 'London dry gin with strong juniper notes.',
-        image: '/Tanqueray Gin.jpg',
+          name: 'Tanqueray Gin',
+          description: 'London dry gin with strong juniper notes.',
+          image: getImageUrl('Tanqueray Gin.jpg'),
          price: 'Ksh 600',
       },
       {
-        name: 'Hennessy VS',
-        description: 'Smooth Cognac with vanilla and oak.',
-        image: '/Hennessy VS.jpg',
+          name: 'Hennessy VS',
+          description: 'Smooth Cognac with vanilla and oak.',
+          image: getImageUrl('Hennessy VS.jpg'),
          price: 'Ksh 600',
       },
     ],
@@ -100,21 +101,21 @@ const drinkMenuData: DrinkCategory[] = [
     category: 'Beers',
     items: [
       {
-        name: 'Tusker Lager',
-        description: 'Kenya’s classic lager.',
-        image: '/Tusker Lager.jpg',
+          name: 'Tusker Lager',
+          description: 'Kenya's classic lager.',
+          image: getImageUrl('Tusker Lager.jpg'),
          price: 'Ksh 600',
       },
       {
-        name: 'White Cap Lager',
-        description: 'Smooth and refreshing lager.',
-        image: '/White Cap Lager.jpg',
+          name: 'White Cap Lager',
+          description: 'Smooth and refreshing lager.',
+          image: getImageUrl('White Cap Lager.jpg'),
          price: 'Ksh 600',
       },
       {
-        name: 'Heineken',
-        description: 'Premium imported lager.',
-        image: '/Heineken.jpg',
+          name: 'Heineken',
+          description: 'Premium imported lager.',
+          image: getImageUrl('Heineken.jpg'),
          price: 'Ksh 600',
       },
     ],
@@ -123,21 +124,21 @@ const drinkMenuData: DrinkCategory[] = [
     category: 'Non-Alcoholic',
     items: [
       {
-        name: 'Mocktail Punch',
-        description: 'Fruity blend of tropical juices.',
-        image: '/Mocktail Punch.jpg',
+          name: 'Mocktail Punch',
+          description: 'Fruity blend of tropical juices.',
+          image: getImageUrl('Mocktail Punch.jpg'),
          price: 'Ksh 600',
       },
       {
-        name: 'Fresh Juice',
-        description: 'Choice of mango, pineapple, passion.',
-        image: '/Fresh Juice.jpg',
+          name: 'Fresh Juice',
+          description: 'Choice of mango, pineapple, passion.',
+          image: getImageUrl('Fresh Juice.jpg'),
          price: 'Ksh 600',
       },
       {
-        name: 'Soft Drinks',
-        description: 'Coca-Cola, Fanta, Sprite, Stoney.',
-        image: '/Soft Drinks.jpg',
+          name: 'Soft Drinks',
+          description: 'Coca-Cola, Fanta, Sprite, Stoney.',
+          image: getImageUrl('Soft Drinks.jpg'),
          price: 'Ksh 600',
       },
     ],
@@ -146,21 +147,21 @@ const drinkMenuData: DrinkCategory[] = [
     category: 'Light Bites',
     items: [
       {
-        name: 'Spicy Chicken Wings',
-        description: 'Served with garlic aioli.',
-        image: '/Spicy Chicken Wings.webp',
+          name: 'Spicy Chicken Wings',
+          description: 'Served with garlic aioli.',
+          image: getImageUrl('Spicy Chicken Wings.webp'),
          price: 'Ksh 600',
       },
       {
-        name: 'Loaded Fries',
-        description: 'Topped with cheese, bacon & jalapeños.',
-        image: '/Loaded Fries.jpg',
+          name: 'Loaded Fries',
+          description: 'Topped with cheese, bacon & jalapeños.',
+          image: getImageUrl('Loaded Fries.jpg'),
          price: 'Ksh 600',
       },
       {
-        name: 'Beef Samosas',
-        description: 'Handmade and served with chutney.',
-        image: '/Beef Samosas.jpg',
+          name: 'Beef Samosas',
+          description: 'Handmade and served with chutney.',
+          image: getImageUrl('Beef Samosas.jpg'),
          price: 'Ksh 600',
       },
     ],
@@ -258,7 +259,6 @@ const DrinkMenu = () => {
       setIsSubmitting(false);
     }
   };
-
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold text-center mb-10 text-gray-800"></h1>
@@ -281,9 +281,9 @@ const DrinkMenu = () => {
                   </span>
                 )}
               </div>
-              <div className="p-4">
-                <h3 className="text-xl font-bold text-gray-800">{item.name}</h3>
-                <p className="text-sm text-gray-600 mt-1">{item.description}</p>
+                <div className="p-4">
+                  <h3 className="text-xl font-bold text-gray-800">{item.name}</h3>
+                  <p className="text-sm text-gray-600 mt-1">{item.description}</p>
                 <button 
                   onClick={() => handleOrderClick(item, section.category)}
                   className="mt-3 px-4 py-2 bg-hotel-gold text-white rounded-md hover:bg-blue-600 transition-colors w-full"
@@ -294,8 +294,8 @@ const DrinkMenu = () => {
             </div>
           ))}
           </div>
-        </div>
-      ))}
+          </div>
+        ))}
 
       {/* Order Modal */}
       <Dialog open={isOrderModalOpen} onOpenChange={setIsOrderModalOpen}>

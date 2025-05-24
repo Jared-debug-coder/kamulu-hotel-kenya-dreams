@@ -1,7 +1,7 @@
 
 import { Link } from 'react-router-dom';
 import { PhoneCall, Mail, MapPin, Facebook, Twitter, Instagram, Calendar, Linkedin } from 'lucide-react';
-
+import { FaYoutube, FaTiktok } from "react-icons/fa";
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
@@ -29,17 +29,10 @@ const Footer = () => {
                 <Linkedin size={20} className="text-[#0A66C2]" />
               </a>
               <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="hover:text-hotel-gold transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#FF0000]">
-                  <path d="M12 19c-2.3 0-6.4-.2-8.1-.6-.7-.2-1.2-.7-1.4-1.4-.3-1.1-.5-3.4-.5-5s.2-3.9.5-5c.2-.7.7-1.2 1.4-1.4C5.6 5.2 9.7 5 12 5s6.4.2 8.1.6c.7.2 1.2.7 1.4 1.4.3 1.1.5 3.4.5 5s-.2 3.9-.5 5c-.2.7-.7 1.2-1.4 1.4-1.7.4-5.8.6-8.1.6 0 0 0 0 0 0z"></path>
-                  <polygon points="10 15 15 12 10 9"></polygon>
-                </svg>
+              <FaYoutube size={20} className="text-[#FF0000]" />
               </a>
               <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="hover:text-hotel-gold transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#000000]">
-                  <path d="M9 12a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"></path>
-                  <path d="M15 8a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"></path>
-                  <path d="M15 2v12a4 4 0 0 1-4 4"></path>
-                </svg>
+              <FaTiktok size={20} className="text-black" />
               </a>
             </div>
           </div>
@@ -50,11 +43,11 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-start">
                 <MapPin size={20} className="mr-2 text-hotel-gold mt-1 flex-shrink-0" />
-                <span>Kamulu, Kasarani Constituency, Nairobi, Kenya</span>
+                <span>Kamulu, Nairobi, Kenya</span>
               </li>
               <li className="flex items-center">
                 <PhoneCall size={20} className="mr-2 text-hotel-gold flex-shrink-0" />
-                <span>+254 712 345 678</span>
+                <span>+254 710464858</span>
               </li>
               <li className="flex items-center">
                 <Mail size={20} className="mr-2 text-hotel-gold flex-shrink-0" />

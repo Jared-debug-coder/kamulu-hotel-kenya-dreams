@@ -1,11 +1,19 @@
-
 import { Link } from 'react-router-dom';
+import { getImageUrl } from '@/lib/utils';
 
 const CallToAction = () => {
   return (
     <section className="py-20 relative">
       <div className="absolute inset-0 bg-hotel-dark opacity-80 z-0"></div>
-      <div className="absolute inset-0 z-10" style={{ backgroundImage: "url('/cta-bg.jpg')", backgroundPosition: "center", backgroundSize: "cover", opacity: 0.2 }}></div>
+      <div 
+        className="absolute inset-0 z-10" 
+        style={{ 
+          backgroundImage: `url('${getImageUrl('rest1.avif')}')`,
+          backgroundPosition: "center", 
+          backgroundSize: "cover", 
+          opacity: 0.2 
+        }}
+      ></div>
       
       <div className="hotel-container relative z-20">
         <div className="text-center text-white">
