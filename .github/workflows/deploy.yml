@@ -56,16 +56,45 @@ jobs:
             exit 1
           fi
 
+      - name: Debug - Check working directory
+        run: |
+          echo "Current working directory: $(pwd)"
+          echo "Repository root files:"
+          ls -la
+
+      - name: Debug - Check dist directory structure and permissions
+        run: |
+          echo "Dist directory structure:"
+          ls -la dist
+          echo "Checking permissions:"
+          stat dist
+          echo "Ensuring correct permissions:"
+          chmod -R 755 dist
+          echo "After permission change:"
+          stat dist
+
+      - name: Debug - Full directory tree
+        run: |
+          echo "Full directory tree (2 levels):"
+          find . -type d -maxdepth 2 -ls
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
         
       - name: Upload artifact
+        id: upload-artifact
         uses: actions/upload-artifact@v3
         with:
           name: github-pages
           path: dist
           if-no-files-found: error
           retention-days: 1
+        
+      - name: Debug - Upload artifact result
+        if: always()
+        run: |
+          echo "Upload artifact step result: ${{ steps.upload-artifact.outcome }}"
+          echo "Upload artifact step conclusion: ${{ steps.upload-artifact.conclusion }}"
 
   deploy:
     environment:
@@ -75,10 +104,17 @@ jobs:
     needs: build
     steps:
       - name: Download artifact
+        id: download-artifact
         uses: actions/download-artifact@v3
         with:
           name: github-pages
           path: .
+
+      - name: Debug - Download artifact result
+        if: always()
+        run: |
+          echo "Download artifact step result: ${{ steps.download-artifact.outcome }}"
+          echo "Download artifact step conclusion: ${{ steps.download-artifact.conclusion }}"
 
       - name: List downloaded files
         run: |
