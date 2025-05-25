@@ -12,6 +12,7 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  actions: write
 
 # Allow only one concurrent deployment
 concurrency:
@@ -35,11 +36,25 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Clean existing artifacts
+        run: |
+          echo "Cleaning up any existing artifacts"
+          mkdir -p dist
+
       - name: Build project
         run: npm run build
         env:
           # Ensure base path is correctly set for GitHub Pages
           VITE_BASE_URL: /kamulu-hotel-kenya-dreams/
+
+      - name: Verify build output
+        run: |
+          echo "Verifying build output in dist directory"
+          ls -la dist
+          if [ ! -d "dist" ] || [ -z "$(ls -A dist)" ]; then
+            echo "Error: dist directory is empty or does not exist"
+            exit 1
+          fi
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -48,8 +63,9 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: github-pages
-          path: ./dist
+          path: dist
           if-no-files-found: error
+          retention-days: 1
 
   deploy:
     environment:
@@ -62,7 +78,12 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: github-pages
-          path: ./dist
+          path: .
+
+      - name: List downloaded files
+        run: |
+          echo "Listing downloaded files"
+          ls -la
 
       - name: Deploy to GitHub Pages
         id: deployment
