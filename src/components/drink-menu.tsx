@@ -102,7 +102,7 @@ const drinkMenuData: DrinkCategory[] = [
     items: [
       {
           name: 'Tusker Lager',
-          description: 'Kenya's classic lager.',
+          description: 'Kenya\'s classic lager.',
           image: getImageUrl('Tusker Lager.jpg'),
          price: 'Ksh 600',
       },
@@ -154,7 +154,7 @@ const drinkMenuData: DrinkCategory[] = [
       },
       {
           name: 'Loaded Fries',
-          description: 'Topped with cheese, bacon & jalapeños.',
+          description: 'Topped with cheese, bacon & jalapenos.',
           image: getImageUrl('Loaded Fries.jpg'),
          price: 'Ksh 600',
       },

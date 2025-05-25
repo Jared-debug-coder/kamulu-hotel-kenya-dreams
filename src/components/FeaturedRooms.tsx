@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { getImageUrl } from '@/lib/utils';
 
 interface Room {
   id: number;
@@ -18,7 +19,7 @@ const roomsData: Room[] = [
     name: "Deluxe Room",
     description: "Spacious room with modern amenities and beautiful views.",
     price: 8500,
-    image: "/room1.avif",
+    image: getImageUrl("room1.avif"),
     capacity: 2,
     size: 32,
     amenities: ["Free Wi-Fi", "Air Conditioning", "Flat-screen TV", "Private Bathroom"]
@@ -28,7 +29,7 @@ const roomsData: Room[] = [
     name: "Executive Suite",
     description: "Luxurious suite with separate living area and premium amenities.",
     price: 15000,
-    image: "/room2.avif",
+    image: getImageUrl("room2.avif"),
     capacity: 2,
     size: 48,
     amenities: ["Free Wi-Fi", "Air Conditioning", "Mini Bar", "Living Area", "Balcony"]
@@ -38,7 +39,7 @@ const roomsData: Room[] = [
     name: "Family Room",
     description: "Perfect for families, with spacious accommodation for up to 4 guests.",
     price: 12000,
-    image: "/room3.avif",
+    image: getImageUrl("room3.avif"),
     capacity: 4,
     size: 45,
     amenities: ["Free Wi-Fi", "Air Conditioning", "Flat-screen TV", "Family Bathroom"]

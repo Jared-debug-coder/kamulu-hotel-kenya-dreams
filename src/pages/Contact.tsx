@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import ContactForm from "@/components/ContactForm";
 import { PhoneCall, Mail, MapPin, Clock } from "lucide-react";
-
+import { getImageUrl } from '@/lib/utils';
 const Contact = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -15,7 +15,7 @@ const Contact = () => {
       <div className="relative h-80 md:h-96">
         <div className="absolute inset-0">
           <img
-            src="/phone.webp"
+             src={getImageUrl("phone.webp")}
             alt="Contact Us"
             className="w-full h-full object-cover"
           />

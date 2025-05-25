@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 import BookingForm from "@/components/BookingForm";
 import { useLocation } from "react-router-dom";
+import { getImageUrl } from "@/lib/utils";
 
 
 const Reservation = () => {
@@ -18,7 +19,7 @@ const Reservation = () => {
       <div className="relative h-80 md:h-96">
         <div className="absolute inset-0">
           <img
-            src="/room4.avif"
+            src={getImageUrl("room4.avif")}
             alt="Make a Reservation"
             className="w-full h-full object-cover"
           />

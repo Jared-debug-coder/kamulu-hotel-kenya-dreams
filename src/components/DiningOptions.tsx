@@ -1,6 +1,7 @@
 
 import { Link } from 'react-router-dom';
 import { Utensils, Coffee } from 'lucide-react';
+import { getImageUrl } from '@/lib/utils';
 
 const DiningOptions = () => {
   return (
@@ -22,7 +23,7 @@ const DiningOptions = () => {
             </div>
             
             <img 
-              src="/room1.avif"
+              src={getImageUrl("room1.avif")}
               alt="Kamulu Waters Restaurant"
               className="w-full h-64 object-cover rounded-lg mb-6"
             />
@@ -53,7 +54,7 @@ const DiningOptions = () => {
             </div>
             
             <img 
-              src="/bar.webp"
+              src={getImageUrl("bar.webp")}
               alt="Kamulu Waters Bar & Lounge"
               className="w-full h-64 object-cover rounded-lg mb-6"
             />

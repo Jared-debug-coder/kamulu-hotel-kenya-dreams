@@ -25,7 +25,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <BrowserRouter basename="/kamulu-hotel-kenya-dreams">
         <Navbar />
         <main className="min-h-screen">
           <Routes>
