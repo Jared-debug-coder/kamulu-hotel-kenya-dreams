@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 
 const testimonials = [
   {
@@ -24,6 +25,13 @@ const testimonials = [
 ];
 
 const Testimonials = () => {
+  const [baseUrl, setBaseUrl] = useState('');
+  
+  useEffect(() => {
+    // Set the base URL for images
+    setBaseUrl(window.location.origin);
+  }, []);
+  
   return (
     <section className="section-padding bg-gray-50">
       <div className="hotel-container">
@@ -39,7 +47,7 @@ const Testimonials = () => {
             <div key={testimonial.id} className="bg-white p-6 rounded-lg shadow-md">
               <div className="flex items-center mb-4">
                 <img
-                  src={testimonial.avatar}
+                  src={`${baseUrl}${testimonial.avatar}`}
                   alt={testimonial.name}
                   className="w-14 h-14 rounded-full object-cover mr-4"
                 />

@@ -1,8 +1,15 @@
 
 import { Link } from 'react-router-dom';
 import { Calendar, CalendarClock } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 const MeetingsEvents = () => {
+  const [baseUrl, setBaseUrl] = useState('');
+  
+  useEffect(() => {
+    // Set the base URL for images
+    setBaseUrl(window.location.origin);
+  }, []);
   return (
     <section className="section-padding bg-gray-50">
       <div className="hotel-container">
@@ -45,7 +52,7 @@ const MeetingsEvents = () => {
           
           <div className="order-1 md:order-2">
             <img 
-              src="/meeting.avif"
+              src={`${baseUrl}/meeting-room.jpg`}
               alt="Kamulu Waters Hotel Meeting Room" 
               className="rounded-lg shadow-lg w-full h-[400px] object-cover"
             />
