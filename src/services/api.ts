@@ -1,7 +1,32 @@
 import axios from 'axios';
+import { AxiosError } from 'axios';
 
-// Base URL for the API
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000/api';
+// Determine environment
+const isDevelopment = import.meta.env.DEV;
+console.log(`Running in ${isDevelopment ? 'development' : 'production'} mode`);
+
+// Base URL for the API with protocol handling
+const determineApiBaseUrl = () => {
+  // Use environment variable if available
+  if (import.meta.env.VITE_API_BASE_URL) {
+    console.log(`Using configured API URL: ${import.meta.env.VITE_API_BASE_URL}`);
+    return import.meta.env.VITE_API_BASE_URL;
+  }
+  
+  // For local development
+  if (isDevelopment) {
+    console.log('Using development API URL: http://localhost:8000/api');
+    return 'http://localhost:8000/api';
+  }
+  
+  // For production, try to match the current protocol (http/https)
+  const protocol = window.location.protocol === 'https:' ? 'https:' : 'http:';
+  const fallbackUrl = `${protocol}//api.kamulu-waters-hotel.com/api`;
+  console.log(`Using production API URL with protocol ${protocol}: ${fallbackUrl}`);
+  return fallbackUrl;
+};
+
+const API_BASE_URL = determineApiBaseUrl();
 
 // Define TypeScript interfaces to match Django models
 export interface Room {
@@ -26,9 +51,9 @@ export interface Reservation {
   check_in_date: string; // ISO date string
   check_out_date: string; // ISO date string
   number_of_guests: number;
+  total_price: number; // Required field
   special_requests?: string;
   status?: 'PENDING' | 'CONFIRMED' | 'CHECKED_IN' | 'CHECKED_OUT' | 'CANCELLED';
-  total_price?: number; // Will be calculated by backend
   created_at?: string;
   updated_at?: string;
 }
@@ -61,6 +86,18 @@ export interface ApiError {
   details?: any;
 }
 
+// Order data from menu submission form
+export interface OrderData {
+  customerName: string;
+  phoneNumber: string;
+  notes?: string;
+  paymentMethod: 'pay_now' | 'pay_on_delivery';
+  itemName: string;
+  quantity: number;
+  price: string;
+  category: string;
+}
+
 // Create Axios instance
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -76,8 +113,38 @@ api.interceptors.request.use((config) => {
     config.url += '/';
     console.log(`Added trailing slash to URL: ${config.url}`);
   }
+  
+  // Log full request URL for debugging
+  const fullUrl = `${config.baseURL || ''}${config.url || ''}`;
+  console.log(`API Request: ${config.method?.toUpperCase() || 'GET'} ${fullUrl}`);
+  
   return config;
 });
+
+// Add response interceptor for better error handling
+api.interceptors.response.use(
+  (response) => {
+    console.log(`API Response: ${response.status} ${response.config.url}`);
+    return response;
+  },
+  (error: AxiosError) => {
+    if (error.response) {
+      // The request was made and the server responded with a status code
+      // that falls out of the range of 2xx
+      console.error(`API Error ${error.response.status}: ${error.response.config?.url || 'unknown URL'}`);
+      console.error('Response data:', error.response.data);
+    } else if (error.request) {
+      // The request was made but no response was received
+      console.error('Network Error - No response received from server:', error.request);
+      console.error('Requested URL:', error.config?.url);
+      console.error('Full error:', error);
+    } else {
+      // Something happened in setting up the request that triggered an Error
+      console.error('API Request Error:', error.message);
+    }
+    return Promise.reject(error);
+  }
+);
 // API functions
 export const roomApi = {
   // Get all rooms
@@ -110,25 +177,72 @@ export const roomApi = {
     }
   },
 
-  // Get available rooms
+  // Get available rooms with retry logic
   getAvailable: async (
     checkIn: string,
     checkOut: string,
-    roomType?: string
+    roomType?: string,
+    maxRetries = 2
   ): Promise<Room[]> => {
     try {
-      let url = `/rooms/available/?check_in=${checkIn}&check_out=${checkOut}`;
-      if (roomType) {
-        url += `&type=${roomType}`;
-      }
-      const response = await api.get(url);
-      return response.data;
+      console.log('=== FETCHING AVAILABLE ROOMS ===');
+      console.log('Request parameters:', { checkIn, checkOut, roomType });
+      
+      // Get all rooms first
+      const response = await api.get('/rooms/');
+      console.log('Raw API response:', response.data);
+      
+      // Handle both array and paginated responses
+      const rawRooms = Array.isArray(response.data) ? response.data : response.data.results || [];
+      
+      // Transform and filter the rooms
+      const transformedRooms = rawRooms
+        .map((room: any) => ({
+        id: room.id,
+        room_number: room.room_number,
+        room_type: room.room_type,
+        price_per_night: parseFloat(room.price_per_night),
+        capacity: parseInt(room.capacity),
+        is_available: Boolean(room.is_available),
+        description: room.description || '',
+        amenities: Array.isArray(room.amenities) ? room.amenities : [],
+        image_urls: Array.isArray(room.image_urls) ? room.image_urls : []
+      }))
+      .filter(room => room.is_available); // Only return available rooms
+      
+      console.log('Transformed and filtered rooms:', transformedRooms);
+      return transformedRooms;
+      
     } catch (error: any) {
-      console.error('Error fetching available rooms:', error);
+      console.error('Error in getAvailable:', error);
+      if (error.response) {
+        console.error('Error response data:', error.response.data);
+        console.error('Error response status:', error.response.status);
+      }
+      
+      // Check if it's a network error
+      if (!error.response && error.request) {
+        throw {
+          message: 'Network error. Please check your internet connection.',
+          status: 0,
+          details: error
+        } as ApiError;
+      }
+      
+      // Handle specific error cases
+      if (error.response?.status === 500) {
+        throw {
+          message: 'Server error while fetching rooms. Please try again later.',
+          status: 500,
+          details: error.response.data
+        } as ApiError;
+      }
+      
+      // Handle other errors
       throw {
-        message: 'Failed to fetch available rooms',
+        message: error.message || 'Failed to fetch available rooms',
         status: error.response?.status,
-        details: error.response?.data,
+        details: error.response?.data
       } as ApiError;
     }
   },
@@ -138,12 +252,51 @@ export const reservationApi = {
   // Create a new reservation
   create: async (reservationData: Omit<Reservation, 'id' | 'created_at' | 'updated_at' | 'status'>): Promise<Reservation> => {
     try {
-      const response = await api.post('/reservations/', reservationData);
+      console.log('=== RESERVATION API DEBUG ===');
+      console.log('API Base URL:', API_BASE_URL);
+      console.log('Endpoint:', '/reservations/');
+      console.log('Request data:', reservationData);
+      
+      // Add CORS headers to the request
+      const response = await api.post('/reservations/', reservationData, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        }
+      });
+      
+      console.log('Reservation created successfully');
+      console.log('Response status:', response.status);
+      console.log('Response data:', response.data);
+      
       return response.data;
     } catch (error: any) {
-      console.error('Error creating reservation:', error);
+      console.error('=== RESERVATION ERROR DEBUG ===');
+      console.error('Error type:', error.constructor.name);
+      console.error('Error message:', error.message);
+      
+      if (error.response) {
+        // The request was made and the server responded with a status
+        console.error('Response status:', error.response.status);
+        console.error('Response headers:', error.response.headers);
+        console.error('Response data:', error.response.data);
+      } else if (error.request) {
+        // The request was made but no response was received
+        console.error('No response received');
+        console.error('Request details:', error.request);
+      } else {
+        // Something happened in setting up the request
+        console.error('Request setup error');
+      }
+      
+      // Check if it's a network error
+      const isNetworkError = !error.response && error.request;
+      const errorMessage = isNetworkError 
+        ? 'Network error: Unable to connect to the server. Please check your internet connection.'
+        : error.response?.data?.message || 'Failed to create reservation. Please try again.';
+      
       throw {
-        message: 'Failed to create reservation',
+        message: errorMessage,
         status: error.response?.status,
         details: error.response?.data,
       } as ApiError;
@@ -269,5 +422,7 @@ export default {
   room: roomApi,
   reservation: reservationApi,
   order: orderApi,
+  // Export utility functions
+  formatDateForApi
 };
 
