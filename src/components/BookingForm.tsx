@@ -49,32 +49,84 @@ const BookingForm = () => {
     }
   }, [checkIn, checkOut]);
 
-  // Function to fetch available rooms
-  const fetchAvailableRooms = async () => {
+  // Function to fetch available rooms with retry mechanism
+  const fetchAvailableRooms = async (retryCount = 0, maxRetries = 2) => {
     if (!checkIn || !checkOut) return;
     
     setFetchingRooms(true);
     setFetchError(null);
-    
+    let isNetworkError = false;
+
     try {
+      // Format dates for API
       const checkInStr = formatDateForApi(checkIn);
       const checkOutStr = formatDateForApi(checkOut);
       
-      const rooms = await roomApi.getAvailable(checkInStr, checkOutStr);
-      setAvailableRooms(rooms);
+      console.log('Fetching rooms for dates:', { checkInStr, checkOutStr });
       
-      // Clear room selection when available rooms change
-      setRoomId("");
-    } catch (error) {
-      const apiError = error as ApiError;
-      setFetchError(apiError.message || "Failed to fetch available rooms. Please try again.");
+      // First get all rooms
+      const rooms = await roomApi.getAvailable(checkInStr, checkOutStr);
+      console.log('Received rooms:', rooms);
+      
+      if (Array.isArray(rooms)) {
+        setAvailableRooms(rooms);
+        
+        if (rooms.length === 0) {
+          toast({
+            title: "No rooms available",
+            description: "There are no rooms available for the selected dates. Please try different dates.",
+          });
+        }
+        
+        // Clear room selection when available rooms change
+        setRoomId("");
+      } else {
+        throw new Error('Invalid response format from server');
+      }
+    } catch (error: any) {
+      console.error('Error in fetchAvailableRooms:', error);
+      
+      let errorMessage = 'Failed to fetch available rooms. Please try again.';
+      isNetworkError = !error.response && error.request;
+      
+      if (error.response?.status === 500) {
+        errorMessage = 'Server error. Please try again later.';
+      } else if (isNetworkError) {
+        errorMessage = 'Network error. Please check your internet connection.';
+      } else if (error.message) {
+        errorMessage = error.message;
+      }
+      
+      // Try to retry on network errors
+      if (isNetworkError && retryCount < maxRetries) {
+        console.log(`Network error, retrying (${retryCount + 1}/${maxRetries})...`);
+        
+        const delay = Math.pow(2, retryCount) * 1000; // Exponential backoff: 1s, 2s, 4s
+        
+        toast({
+          title: "Connection issue",
+          description: `Having trouble connecting to server. Retrying in ${delay/1000} seconds...`,
+        });
+        
+        // Wait before retrying
+        setTimeout(() => {
+          fetchAvailableRooms(retryCount + 1, maxRetries);
+        }, delay);
+        
+        return; // Exit early as we'll retry
+      }
+      
+      setFetchError(errorMessage);
+      
       toast({
         variant: "destructive",
-        title: "Error fetching rooms",
-        description: apiError.message || "Something went wrong. Please try again.",
+        title: "Error",
+        description: errorMessage,
       });
     } finally {
-      setFetchingRooms(false);
+      if (retryCount === maxRetries || !isNetworkError) {
+        setFetchingRooms(false);
+      }
     }
   };
 
@@ -157,14 +209,34 @@ const BookingForm = () => {
         throw new Error("Selected room not found");
       }
       
+      // Create new Date objects for calculation to avoid modifying the original dates
+      const checkInDate = new Date(checkIn);
+      checkInDate.setHours(0, 0, 0, 0);
+      const checkOutDate = new Date(checkOut);
+      checkOutDate.setHours(0, 0, 0, 0);
+      
       // Calculate number of nights
-      const checkInDate = new Date(checkIn.setHours(0, 0, 0, 0));
-      const checkOutDate = new Date(checkOut.setHours(0, 0, 0, 0));
       const timeDiff = checkOutDate.getTime() - checkInDate.getTime();
       const nights = Math.ceil(timeDiff / (1000 * 3600 * 24));
       
-      // Calculate total price
-      const total_price = selectedRoom.price_per_night * nights;
+      // Calculate total price - ensure price_per_night is a number
+      const pricePerNight = typeof selectedRoom.price_per_night === 'string' 
+        ? parseFloat(selectedRoom.price_per_night)
+        : selectedRoom.price_per_night;
+      
+      const total_price = pricePerNight * nights;
+      
+      // Log calculation details
+      console.log('Price calculation:', {
+        checkInDate: checkInDate.toISOString(),
+        checkOutDate: checkOutDate.toISOString(),
+        nights,
+        pricePerNight,
+        total_price
+      });
+      
+      console.clear(); // Clear previous console output
+      console.log('=== STARTING NEW RESERVATION SUBMISSION ===');
       
       // Create reservation object
       const reservationData: Omit<Reservation, 'id' | 'created_at' | 'updated_at' | 'status'> = {
@@ -181,35 +253,65 @@ const BookingForm = () => {
       };
       
       // Submit reservation to API
-      await reservationApi.create(reservationData);
-      
-      toast({
-        title: "Booking Request Submitted!",
-        description: "We'll confirm your reservation shortly via email.",
-      });
-      
-      // Reset form
-      setCheckIn(undefined);
-      setCheckOut(undefined);
-      setRoomId("");
-      setAdults("1");
-      setChildren("0");
-      setFirstName("");
-      setLastName("");
-      setEmail("");
-      setPhone("");
-      setSpecialRequests("");
-      setAvailableRooms([]);
-      setDatesSelected(false);
+      // Log the reservation data and explicitly verify total_price is included
+      console.log('Submitting reservation with data:', reservationData);
+      console.log('Total price included:', reservationData.total_price);
+      console.log('API Base URL:', import.meta.env.VITE_API_BASE_URL);
+
+      // Add a try-catch around the API call
+      try {
+        console.log('Attempting to create reservation with data:', reservationData);
+        const result = await reservationApi.create(reservationData);
+        console.log('Reservation created successfully:', result);
+        
+        toast({
+          title: "Success!",
+          description: "Your reservation has been submitted successfully.",
+        });
+        
+        // Reset form
+        setCheckIn(undefined);
+        setCheckOut(undefined);
+        setRoomId("");
+        setAdults("1");
+        setChildren("0");
+        setFirstName("");
+        setLastName("");
+        setEmail("");
+        setPhone("");
+        setSpecialRequests("");
+        setAvailableRooms([]);
+        setDatesSelected(false);
+      } catch (error: any) {
+        console.error('Failed to create reservation:', error);
+        
+        let errorMessage = 'Failed to create reservation. Please try again.';
+        if (error.response?.status === 500) {
+          errorMessage = 'Server error. Please try again later.';
+        } else if (!error.response && error.request) {
+          errorMessage = 'Network error. Please check your internet connection.';
+        } else if (error.response?.data?.message) {
+          errorMessage = error.response.data.message;
+        }
+        
+        toast({
+          variant: "destructive",
+          title: "Booking Failed",
+          description: errorMessage,
+        });
+        
+        throw error; // Re-throw to be caught by outer catch block
+      }
       
     } catch (error) {
-      const apiError = error as ApiError;
-      toast({
-        variant: "destructive",
-        title: "Booking Failed",
-        description: apiError.message || "Something went wrong with your booking. Please try again.",
-      });
-      console.error("Booking error:", apiError);
+      // We already displayed a toast in the inner catch block
+      console.error("Booking error:", error);
+      
+      // Check if form is already reset by inner try/catch
+      if (checkIn !== undefined) {
+        // Reset only necessary form fields if not already reset
+        setLoading(false);
+      }
     } finally {
       setLoading(false);
     }
