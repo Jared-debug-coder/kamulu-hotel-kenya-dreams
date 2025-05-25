@@ -25,12 +25,9 @@ const testimonials = [
 ];
 
 const Testimonials = () => {
-  const [baseUrl, setBaseUrl] = useState('');
+  // Use an empty string as fallback for SSR
+  const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
   
-  useEffect(() => {
-    // Set the base URL for images
-    setBaseUrl(window.location.origin);
-  }, []);
   
   return (
     <section className="section-padding bg-gray-50">
