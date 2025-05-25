@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { getImageUrl } from "@/lib/utils";
 
 const testimonials = [
   {
@@ -6,29 +6,25 @@ const testimonials = [
     name: "John Kamau",
     position: "Business Traveler",
     quote: "Exceptional service and comfortable rooms. The staff went above and beyond to make my business trip a success. I'll definitely be returning on my next visit to Nairobi.",
-    avatar: "/jared.jpg"
+    avatar: "jared.jpg"
   },
   {
     id: 2,
     name: "Jane Wanjiku",
     position: "Family Vacation",
     quote: "Our family had an amazing stay at Kamulu Waters Hotel. The rooms were spacious, the food was delicious, and the location was perfect for exploring the city.",
-    avatar: "/liza.jpg"
+    avatar: "liza.jpg"
   },
   {
     id: 3,
     name: "David Omondi",
     position: "Weekend Getaway",
     quote: "A perfect weekend retreat! The peaceful environment and excellent amenities made our short stay very relaxing. We particularly enjoyed the restaurant's local dishes.",
-    avatar: "/jared.jpg"
+    avatar: "jared.jpg"
   }
 ];
 
 const Testimonials = () => {
-  // Use an empty string as fallback for SSR
-  const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
-  
-  
   return (
     <section className="section-padding bg-gray-50">
       <div className="hotel-container">
@@ -44,7 +40,7 @@ const Testimonials = () => {
             <div key={testimonial.id} className="bg-white p-6 rounded-lg shadow-md">
               <div className="flex items-center mb-4">
                 <img
-                  src={`${baseUrl}${testimonial.avatar}`}
+                  src={getImageUrl(testimonial.avatar)}
                   alt={testimonial.name}
                   className="w-14 h-14 rounded-full object-cover mr-4"
                 />

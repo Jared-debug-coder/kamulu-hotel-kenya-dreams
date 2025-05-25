@@ -1,12 +1,9 @@
 
 import { Link } from 'react-router-dom';
 import { Calendar, CalendarClock } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { getImageUrl } from "@/lib/utils";
 
 const MeetingsEvents = () => {
-  // Use an empty string as fallback for SSR
-  const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
-  
   return (
     <section className="section-padding bg-gray-50">
       <div className="hotel-container">
@@ -49,7 +46,7 @@ const MeetingsEvents = () => {
           
           <div className="order-1 md:order-2">
             <img 
-              src={`${baseUrl}/meeting.avif`}
+              src={getImageUrl("meeting.avif")}
               alt="Kamulu Waters Hotel Meeting Room" 
               className="rounded-lg shadow-lg w-full h-[400px] object-cover"
             />
